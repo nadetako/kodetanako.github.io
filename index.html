@@ -52,15 +52,18 @@
             margin-top: 10px;
         }
 
+        #container {
+            display: flex;
+            width: 100%;
+        }
+
         #topImage {
             width: 50%;
             height: auto;
-            float: left;
         }
 
         .content {
             width: 50%;
-            float: left;
             box-sizing: border-box;
             padding: 20px;
         }
@@ -109,13 +112,15 @@
         </div>
     </header>
 
-    <img id="topImage" src="img/channels4_profile (1).jpg" alt="Your Image">
+    <div id="container">
+        <img id="topImage" src="img/channels4_profile (1).jpg" alt="Your Image">
 
-    <div class="content">
-        <!-- ここに他のコンテンツを追加 -->
-        <section>
-            <p>@NADETAKO</p>
-        </section>
+        <div class="content">
+            <!-- ここに他のコンテンツを追加 -->
+            <section>
+                <p>@NADETAKO</p>
+            </section>
+        </div>
     </div>
 
     <button id="scrollTopBtn" onclick="scrollToTop()">トップに戻る</button>
