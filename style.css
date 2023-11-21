@@ -20,6 +20,10 @@ header {
     position: relative; /* 追加 */
 }
 
+div {
+    size: 25px;
+}
+
 h1 {
     font-size: 2em;
     margin: 0;
