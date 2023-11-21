@@ -12,56 +12,10 @@
     </header1>
     <header2>
         <h2>お知らせ<br />『僕の前で消える靴下』を公開中！（まだです）</h2>
-        <button class="login-button" onclick="redirectToGitHub()">Login</button>
-        <div id="user-info"></div>
     </header2>
     <section>
         <p>Welcome to my GitHub Pages profile.</p>
     </section>
-
-    <script>
-        // 以前のスクリプトをそのまま残しています
-        const clientID = '6c728661aca05793ef04';
-        const redirectURI = 'https://<ユーザー名>.github.io';
-
-        function redirectToGitHub() {
-            window.location.href = `https://github.com/login/oauth/authorize?client_id=${clientID}&redirect_uri=${redirectURI}&scope=user`;
-        }
-
-        async function handleGitHubLogin() {
-            const params = new URLSearchParams(window.location.search);
-            const code = params.get('code');
-
-            const response = await fetch(`https://github.com/login/oauth/access_token`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Accept: 'application/json',
-                },
-                body: JSON.stringify({
-                    client_id: clientID,
-                    client_secret: '26e166030c238baee5de17dd2461a8de49e32e1c',
-                    code: code,
-                    redirect_uri: redirectURI,
-                }),
-            });
-
-            const data = await response.json();
-
-            const userResponse = await fetch('https://api.github.com/user', {
-                headers: {
-                    Authorization: `Bearer ${data.access_token}`,
-                },
-            });
-
-            const userData = await userResponse.json();
-
-            document.getElementById('user-info').innerHTML = `&#x25CF; ${userData.login}`;
-        }
-
-        if (window.location.search.includes('code')) {
-            handleGitHubLogin();
-        }
     </script>
 </body>
 </html>
