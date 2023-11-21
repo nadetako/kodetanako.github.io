@@ -20,6 +20,11 @@ header {
     position: relative; /* 追加 */
 }
 
+div {
+    background-color: #00ff7f;
+    color: #000000;
+}
+
 h1 {
     font-size: 2em;
     margin: 0;
