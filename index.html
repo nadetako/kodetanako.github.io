@@ -36,7 +36,6 @@ o<!DOCTYPE html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scroll to Top Button</title>
     <style>
-        /* スクロールトップボタンのスタイル */
         #scrollTopBtn {
             display: none;
             position: fixed;
@@ -48,35 +47,67 @@ o<!DOCTYPE html>
             border-radius: 5px;
             padding: 10px 15px;
             cursor: pointer;
+            opacity: 0; /* 初期状態は透明に設定 */
+            transition: opacity 0.3s ease; /* アニメーションの設定 */
+        }
+
+        #scrollIcon {
+            position: fixed;
+            bottom: 70px;
+            right: 20px;
+            opacity: 1;
+            transition: opacity 0.3s ease; /* アニメーションの設定 */
+        }
+
+        /* 画像のスタイル */
+        #topImage {
+            width: 100%;
+            height: auto;
         }
     </style>
 </head>
 <body>
-    <!-- ここにコンテンツを配置 -->
+    <!-- 画像の追加 -->
+    <img id="topImage" src="path/to/your/image.jpg" alt="Top Image">
+
+    <!-- scroll アイコンの追加 -->
+    <img id="scrollIcon" src="path/to/your/scroll-icon.gif" alt="Scroll Icon">
 
     <!-- トップに戻るボタン -->
     <button id="scrollTopBtn" onclick="scrollToTop()">トップに戻る</button>
 
     <script>
-        // スクロール位置が一定以上になるとボタンを表示する
         window.onscroll = function() {
             scrollFunction();
         };
 
         function scrollFunction() {
             const scrollTopBtn = document.getElementById("scrollTopBtn");
+            const scrollIcon = document.getElementById("scrollIcon");
+
             if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
                 scrollTopBtn.style.display = "block";
+                scrollTopBtn.style.opacity = "1"; // フェードイン
             } else {
-                scrollTopBtn.style.display = "none";
+                scrollTopBtn.style.opacity = "0"; // フェードアウト
+                setTimeout(function() {
+                    scrollTopBtn.style.display = "none";
+                }, 300); // フェードアウト後に非表示
+            }
+
+            // スクロールアイコンの表示・非表示
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                scrollIcon.style.opacity = "0";
+            } else {
+                scrollIcon.style.opacity = "1";
             }
         }
 
-        // トップにスクロールする
         function scrollToTop() {
-            document.body.scrollTop = 0; // For Safari
-            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
         }
     </script>
 </body>
 </html>
+
