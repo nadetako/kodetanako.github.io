@@ -32,9 +32,9 @@ p {
 
 /* ログインボタンのスタイル */
 .login-button {
-    background-color: #4caf50;
-    color: #fff;
-    padding: 10px 20px;
+    background-color: #e6e6fa;
+    color: ##f0f8ff;
+    padding: 50px 100px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
