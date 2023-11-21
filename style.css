@@ -20,6 +20,10 @@ header {
     position: relative; /* 追加 */
 }
 
+img {
+    size: 50px;
+}
+
 div {
     size: 100px;
 }
