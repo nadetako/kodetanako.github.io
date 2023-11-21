@@ -3,17 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>コデタナコ公式ウェブサイト</title>
+    <title>Your Name's Profile</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <h1>NADETAKO</h1>
-        <button class="login-button">ログイン</button>
+        <button class="login-button" onclick="redirectToGitHub()">ログイン</button>
+        <div id="user-info"></div>
     </header>
     <section>
         <p>お知らせ<br />『僕の前で消える靴下』を公開中！</p>
     </section>
-    <!-- 他のコンテンツを追加してください -->
+
+    <script>
+        function redirectToGitHub() {
+            // GitHubのログインページにリダイレクト
+            window.location.href = "https://github.com/login/oauth/authorize?client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&scope=user";
+        }
+
+        // ログイン後のコールバック処理（仮の例）
+        function handleGitHubLogin(username) {
+            document.getElementById('user-info').innerHTML = `&#x25CF; ${username}`;
+        }
+    </script>
 </body>
 </html>
