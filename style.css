@@ -43,8 +43,8 @@ p {
 
     /* 位置を右上に設定 */
     position: absolute;
-    top: 10px;
-    right: 200px;
+    top: 15px;
+    right: 250px;
 }
 
 /* 他のスタイルを追加してください */
