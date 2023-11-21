@@ -17,7 +17,7 @@
     </section>
 
     <script>
-        const clientID = 'YOUR_CLIENT_ID'; // GitHub OAuth AppのClient ID
+        const clientID = '6c728661aca05793ef04'; // GitHub OAuth AppのClient ID
         const redirectURI = 'https://<ユーザー名>.github.io'; // GitHub OAuth AppのAuthorization callback URL
 
         function redirectToGitHub() {
@@ -39,7 +39,7 @@
                 },
                 body: JSON.stringify({
                     client_id: clientID,
-                    client_secret: 'YOUR_CLIENT_SECRET', // GitHub OAuth AppのClient Secret
+                    client_secret: '26e166030c238baee5de17dd2461a8de49e32e1c', // GitHub OAuth AppのClient Secret
                     code: code,
                     redirect_uri: redirectURI,
                 }),
