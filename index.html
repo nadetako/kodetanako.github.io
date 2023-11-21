@@ -4,7 +4,96 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>コデタナコ公式ウェブサイト</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin: 0;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin: 20px;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        header {
+            text-align: left;
+        }
+
+        .header-buttons {
+            margin-top: 10px;
+        }
+
+        #topImage {
+            width: 50%;
+            height: auto;
+            float: left;
+        }
+
+        .content {
+            width: 50%;
+            float: left;
+        }
+
+        #scrollTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        #scrollIcon {
+            position: fixed;
+            bottom: 70px;
+            right: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        section {
+            margin: 20px;
+        }
+
+        p {
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -30,6 +119,37 @@
     <button id="scrollTopBtn" onclick="scrollToTop()">トップに戻る</button>
     <img id="scrollIcon" src="path/to/your/scroll-icon.gif" alt="Scroll Icon">
 
-    <script src="script.js"></script>
+    <script>
+        let isScrolling = false;
+
+        window.addEventListener("scroll", function() {
+            if (!isScrolling) {
+                isScrolling = true;
+
+                const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+                if (window.scrollY > 20) {
+                    scrollTopBtn.style.display = "block";
+                    scrollTopBtn.style.opacity = "1";
+                } else {
+                    scrollTopBtn.style.opacity = "0";
+                    setTimeout(function() {
+                        scrollTopBtn.style.display = "none";
+                    }, 300);
+                }
+
+                isScrolling = false;
+            }
+        });
+
+        function scrollToTop() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+
+        function redirectToSNS(snsURL) {
+            window.open(snsURL, '_blank');
+        }
+    </script>
 </body>
 </html>
