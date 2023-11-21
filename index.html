@@ -88,7 +88,6 @@ o<!DOCTYPE html>
                 isScrolling = true;
 
                 const scrollTopBtn = document.getElementById("scrollTopBtn");
-                const scrollIcon = document.getElementById("scrollIcon");
 
                 if (window.scrollY > 20) {
                     scrollTopBtn.style.display = "block";
@@ -98,12 +97,6 @@ o<!DOCTYPE html>
                     setTimeout(function() {
                         scrollTopBtn.style.display = "none";
                     }, 300);
-                }
-
-                if (window.scrollY > 50) {
-                    scrollIcon.style.opacity = "0";
-                } else {
-                    scrollIcon.style.opacity = "1";
                 }
 
                 isScrolling = false;
