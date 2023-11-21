@@ -33,15 +33,35 @@ o<!DOCTYPE html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GitHub Pages with Image</title>
     <style>
+        body {
+            margin: 0; /* ボディの余白をゼロに設定 */
+            padding: 0; /* ボディのパディングをゼロに設定 */
+            overflow: hidden; /* ページからのスクロールを禁止（画像が半分だけ表示されるようにするため） */
+        }
+
         #topImage {
-            width: 100%;
-            height: auto;
+            width: 50%; /* 画像の幅を画面の半分に設定 */
+            height: auto; /* 高さを自動調整 */
+            float: left; /* 画像を左寄せに設定 */
+        }
+
+        /* 他のコンテンツを追加 */
+
+        /* 画像以外のコンテンツのスタイル */
+        .content {
+            width: 50%; /* 画面の半分を占めるように設定 */
+            float: left; /* 左寄せに設定 */
         }
     </style>
 </head>
 <body>
     <!-- 画像の追加 -->
-    <img id="topImage" src="img/channels4_profile (1).jpg" alt="Your Image">
+    <img id="topImage" src="img/your-image.jpg" alt="Your Image">
+    
+    <!-- 他のコンテンツを追加 -->
+    <div class="content">
+        <!-- ここに他のコンテンツを追加 -->
+    </div>
     <title>Scroll to Top Button</title>
     <style>
         #scrollTopBtn {
