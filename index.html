@@ -16,7 +16,6 @@
             overflow: auto; /* overflow: hidden; を overflow: auto; に変更 */
         }
 
-
         header {
             display: flex;
             justify-content: space-between;
@@ -38,16 +37,6 @@
             font-size: 1.2em;
             line-height: 1.6;
             margin: 20px;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-        }
-
-        header {
-            text-align: left;
         }
 
         .header-buttons {
@@ -142,40 +131,4 @@
         </div>
     </div>
 
-    <button id="scrollTopBtn" onclick="scrollToTop()">トップに戻る</button>
-    <img id="scrollIcon" src="path/to/your/scroll-icon.gif" alt="Scroll Icon">
-
-    <script>
-        let isScrolling = false;
-
-        window.addEventListener("scroll", function() {
-            if (!isScrolling) {
-                isScrolling = true;
-
-                const scrollTopBtn = document.getElementById("scrollTopBtn");
-
-                if (window.scrollY > 20) {
-                    scrollTopBtn.style.display = "block";
-                    scrollTopBtn.style.opacity = "1";
-                } else {
-                    scrollTopBtn.style.opacity = "0";
-                    setTimeout(function() {
-                        scrollTopBtn.style.display = "none";
-                    }, 300);
-                }
-
-                isScrolling = false;
-            }
-        });
-
-        function scrollToTop() {
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
-        }
-
-        function redirectToSNS(snsURL) {
-            window.open(snsURL, '_blank');
-        }
-    </script>
-</body>
-</html>
+    <button id="scrollTopBtn"
