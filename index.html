@@ -47,19 +47,18 @@ o<!DOCTYPE html>
             border-radius: 5px;
             padding: 10px 15px;
             cursor: pointer;
-            opacity: 0; /* 初期状態は透明に設定 */
-            transition: opacity 0.3s ease; /* アニメーションの設定 */
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         #scrollIcon {
             position: fixed;
             bottom: 70px;
             right: 20px;
-            opacity: 1;
-            transition: opacity 0.3s ease; /* アニメーションの設定 */
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        /* 画像のスタイル */
         #topImage {
             width: 100%;
             height: auto;
@@ -67,13 +66,10 @@ o<!DOCTYPE html>
     </style>
 </head>
 <body>
-    <!-- 画像の追加 -->
     <img id="topImage" src="path/to/your/image.jpg" alt="Top Image">
 
-    <!-- scroll アイコンの追加 -->
     <img id="scrollIcon" src="path/to/your/scroll-icon.gif" alt="Scroll Icon">
 
-    <!-- トップに戻るボタン -->
     <button id="scrollTopBtn" onclick="scrollToTop()">トップに戻る</button>
 
     <script>
@@ -87,15 +83,14 @@ o<!DOCTYPE html>
 
             if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
                 scrollTopBtn.style.display = "block";
-                scrollTopBtn.style.opacity = "1"; // フェードイン
+                scrollTopBtn.style.opacity = "1";
             } else {
-                scrollTopBtn.style.opacity = "0"; // フェードアウト
+                scrollTopBtn.style.opacity = "0";
                 setTimeout(function() {
                     scrollTopBtn.style.display = "none";
-                }, 300); // フェードアウト後に非表示
+                }, 300);
             }
 
-            // スクロールアイコンの表示・非表示
             if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
                 scrollIcon.style.opacity = "0";
             } else {
@@ -110,4 +105,5 @@ o<!DOCTYPE html>
     </script>
 </body>
 </html>
+
 
