@@ -3,28 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>コデタナコ公式ウェブサイト</title>
+    <title>Your Name's Profile</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>NADETAKO</h1>
-        <button class="login-button" onclick="redirectToGitHub()">ログイン</button>
+        <h1>Hello, I'm Your Name!</h1>
+        <button class="login-button" onclick="redirectToGitHub()">Login</button>
         <div id="user-info"></div>
     </header>
     <section>
-        <p>お知らせ<br />『僕の前で消える靴下』を公開中！</p>
+        <p>Welcome to my GitHub Pages profile.</p>
     </section>
 
     <script>
+        const clientID = 'YOUR_CLIENT_ID'; // GitHub OAuth AppのClient ID
+        const redirectURI = 'https://<ユーザー名>.github.io'; // GitHub OAuth AppのAuthorization callback URL
+
         function redirectToGitHub() {
             // GitHubのログインページにリダイレクト
-            window.location.href = "https://github.com/login";
+            window.location.href = `https://github.com/login/oauth/authorize?client_id=${clientID}&redirect_uri=${redirectURI}&scope=user`;
         }
 
-        // ログイン後のコールバック処理（仮の例）
-        function handleGitHubLogin(username) {
-            document.getElementById('user-info').innerHTML = `&#x25CF; ${username}`;
+        // ログイン後のコールバック処理
+        async function handleGitHubLogin() {
+            const params = new URLSearchParams(window.location.search);
+            const code = params.get('code');
+
+            // GitHubからアクセストークンを取得
+            const response = await fetch(`https://github.com/login/oauth/access_token`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Accept: 'application/json',
+                },
+                body: JSON.stringify({
+                    client_id: clientID,
+                    client_secret: 'YOUR_CLIENT_SECRET', // GitHub OAuth AppのClient Secret
+                    code: code,
+                    redirect_uri: redirectURI,
+                }),
+            });
+
+            const data = await response.json();
+
+            // アクセストークンを使用してGitHubユーザー情報を取得
+            const userResponse = await fetch('https://api.github.com/user', {
+                headers: {
+                    Authorization: `Bearer ${data.access_token}`,
+                },
+            });
+
+            const userData = await userResponse.json();
+
+            // ユーザー情報を表示
+            document.getElementById('user-info').innerHTML = `&#x25CF; ${userData.login}`;
+        }
+
+        // URLにcodeが含まれていれば、ログイン後の処理を実行
+        if (window.location.search.includes('code')) {
+            handleGitHubLogin();
         }
     </script>
 </body>
