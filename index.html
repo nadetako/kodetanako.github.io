@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -104,9 +105,52 @@
         section {
             margin-top: 20px; /* Adjust the margin as needed */
         }
+
+        /* Loading overlay styles */
+        #loadingOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease;
+        }
+
+        #loadingText {
+            font-size: 20px;
+        }
     </style>
+    <script>
+        window.addEventListener("load", function () {
+            var loadingOverlay = document.getElementById("loadingOverlay");
+            loadingOverlay.style.opacity = 0;
+            loadingOverlay.style.pointerEvents = "none";
+
+            // Optional: Add a delay to hide the loading overlay smoothly
+            setTimeout(function () {
+                loadingOverlay.style.display = "none";
+            }, 500); // Adjust the delay as needed
+        });
+
+        document.onreadystatechange = function () {
+            var loadingText = document.getElementById("loadingText");
+            var progress = Math.floor((document.readyState / 4) * 100); // The fraction depends on the number of stages in the loading process
+
+            loadingText.innerText = "Loading: " + progress + "/100";
+        };
+    </script>
 </head>
+
 <body>
+    <!-- Loading overlay -->
+    <div id="loadingOverlay">
+        <p id="loadingText"></p>
+    </div>
+
     <header>
         <h1>NADETAKO OFFICIAL SITE<br />お知らせ<br />『僕の前で消える靴下』を公開中！（まだです）</h1>
         <div class="header-buttons">
@@ -139,4 +183,5 @@
 
     <button id="scrollTopBtn">Scroll Top</button>
 </body>
+
 </html>
