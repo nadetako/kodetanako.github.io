@@ -132,25 +132,25 @@
             font-size: 20px;
         }
     </style>
-    <script>
-        window.addEventListener("load", function () {
-            var loadingOverlay = document.getElementById("loadingOverlay");
-            loadingOverlay.style.opacity = 0;
-            loadingOverlay.style.pointerEvents = "none";
+   <script>
+    　　window.addEventListener("load", function () {
+    　　var loadingOverlay = document.getElementById("loadingOverlay");
+        loadingOverlay.style.opacity = 0;
+    　　loadingOverlay.style.pointerEvents = "none";
 
-            // Optional: Add a delay to hide the loading overlay smoothly
-            setTimeout(function () {
-                loadingOverlay.style.display = "none";
-            }, 500); // Adjust the delay as needed
-        });
+        // Optional: Add a delay to hide the loading overlay smoothly
+        setTimeout(function () {
+            loadingOverlay.style.display = "none";
+        }, 500); // Adjust the delay as needed
+    });
 
-        document.onreadystatechange = function () {
-            var loadingText = document.getElementById("loadingText");
-            var progress = Math.floor((document.readyState / 4) * 100); // The fraction depends on the number of stages in the loading process
+    document.onreadystatechange = function () {
+        var loadingText = document.getElementById("loadingText");
+        var progress = Math.floor((document.readyState === "complete" ? 4 : document.readyState) / 4 * 100);
 
-            loadingText.innerText = "Loading: " + progress + "/100";
-        };
-    </script>
+        loadingText.innerText = "Loading: " + progress + "/100";
+    };
+</script>
 </head>
 
 <body>
