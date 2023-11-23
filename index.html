@@ -32,6 +32,38 @@
             position: relative;
         }
 
+        .visit-counter {
+            display: flex;
+            align-items: center;
+        }
+
+        .counter-overlay {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            flex-direction: column;
+        }
+
+        .counter-overlay p {
+            font-size: 16px;
+            margin: 0;
+            text-align: center;
+            color: #333;
+        }
+
+        .visit-counter:hover .counter-overlay {
+            opacity: 1;
+            visibility: visible;
+        }
+
         h1 {
             font-size: 2em;
             margin: 0;
@@ -73,6 +105,7 @@
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.3s ease, visibility 0.3s ease;
+            flex-direction: column;
         }
 
         .counter-overlay p {
@@ -160,6 +193,12 @@
             z-index: 1000;
         }
 
+        #visitCounter p {
+            margin: 0;
+            font-size: 14px;
+            text-align: right;
+        }
+
         /* Add margin to the section element */
         section {
             margin-top: 20px; /* Adjust the margin as needed */
@@ -210,41 +249,14 @@
             loadingText.innerText = "Loading: " + progress + "/100";
         };
 
-        // Function to update visit count and display visitor message
+        // Function to update the visit count
         function updateVisitCount() {
-            // Get visit count from localStorage
-            var visitCount = localStorage.getItem('visitCount') || 0;
-
-            // Increment the visit count
-            visitCount++;
-            localStorage.setItem('visitCount', visitCount);
-
-            // Display the visit count and visitor message
-            var visitCounter = document.getElementById('visitCounter');
-            visitCounter.textContent = "サイトクリック数: " + visitCount + "回 あなたは" + getOrdinal(visitCount) + "の訪問者です";
-        }
-
-        // Function to get the ordinal number (e.g., 1st, 2nd, 3rd)
-        function getOrdinal(number) {
-            var suffix = "";
-            if (number % 100 >= 11 && number % 100 <= 13) {
-                suffix = "th";
-            } else {
-                switch (number % 10) {
-                    case 1:
-                        suffix = "st";
-                        break;
-                    case 2:
-                        suffix = "nd";
-                        break;
-                    case 3:
-                        suffix = "rd";
-                        break;
-                    default:
-                        suffix = "th";
-                }
-            }
-            return number + suffix;
+            fetch('https://api.countapi.xyz/update/nadetako/kodetanako/?amount=1')
+                .then(res => res.json())
+                .then(res => {
+                    var visitCounter = document.getElementById('visitCounter');
+                    visitCounter.innerText = `サイトクリック数${res.value}回：あなたは${ordinalSuffixOf(res.value)}の訪問者です`;
+                });
         }
 
         // Call the updateVisitCount function on load
@@ -259,7 +271,7 @@
     </div>
 
     <!-- Visit counter -->
-    <div id="visitCounter"></div>
+    <div id="visitCounter" class="visit-counter"></div>
 
     <header>
         <h1>NADETAKO OFFICIAL SITE<br />お知らせ<br />『僕の前で消える靴下』を公開中！（まだです）</h1>
