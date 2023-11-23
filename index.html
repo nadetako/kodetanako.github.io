@@ -49,6 +49,11 @@
             gap: 10px; /* Adjust the gap as needed */
         }
 
+        .header-buttons a {
+            display: inline-block;
+            position: relative;
+        }
+
         .header-buttons button {
             padding: 10px; /* Adjust the padding as needed */
             font-size: 1em; /* Adjust the font size as needed */
@@ -116,6 +121,23 @@
             margin-top: 20px; /* Adjust the margin as needed */
         }
 
+        /* Language switcher styles */
+        #languageSwitcher {
+            position: fixed;
+            top: 60px; /* Adjust the top position as needed */
+            right: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            z-index: 1000;
+            display: none;
+        }
+
+        .languageButton {
+            padding: 10px;
+            cursor: pointer;
+        }
+
         /* Loading overlay styles */
         #loadingOverlay {
             position: fixed;
@@ -133,69 +155,83 @@
         #loadingText {
             font-size: 20px;
         }
-
-        /* 追加したスタイル */
-            .header-buttons a {
-            display: inline-block;
-            width: 40px; /* 調整したい幅に合わせて変更 */
-            height: 40px; /* 調整したい高さに合わせて変更 */
-        }
-
-        .header-buttons img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* 画像が規定のサイズに収まるように調整 */
-　　　　 }
-
-/* 他のスタイルは変更なし */
-
     </style>
-   <script>
-               document.addEventListener('keydown', function (event) {
+    <script>
+        document.addEventListener('keydown', function (event) {
             // Check if the key combination is Win + Shift + Enter
             if (event.key === 'Enter' && event.shiftKey && event.metaKey) {
                 // Redirect to page2.html
                 window.location.href = 'page2.html';
             }
         });
-       
-    　　window.addEventListener("load", function () {
-    　　var loadingOverlay = document.getElementById("loadingOverlay");
-        loadingOverlay.style.opacity = 0;
-    　　loadingOverlay.style.pointerEvents = "none";
 
-        // Optional: Add a delay to hide the loading overlay smoothly
-        setTimeout(function () {
-            loadingOverlay.style.display = "none";
-        }, 500); // Adjust the delay as needed
-    });
+        window.addEventListener("load", function () {
+            var loadingOverlay = document.getElementById("loadingOverlay");
+            loadingOverlay.style.opacity = 0;
+            loadingOverlay.style.pointerEvents = "none";
 
-    document.onreadystatechange = function () {
-        var loadingText = document.getElementById("loadingText");
-        var progress = Math.floor((document.readyState === "complete" ? 4 : document.readyState) / 4 * 100);
+            // Optional: Add a delay to hide the loading overlay smoothly
+            setTimeout(function () {
+                loadingOverlay.style.display = "none";
+            }, 500); // Adjust the delay as needed
+        });
 
-        loadingText.innerText = "Loading: " + progress + "/100";
-    };
-</script>
-<header>
-    <h1>NADETAKO OFFICIAL SITE<br />お知らせ<br />『僕の前で消える靴下』を公開中！（まだです）</h1>
-    <div class="header-buttons">
-        <a href="https://twitter.com/kodetanako" target="_blank" title="Twitter">
-            <img src="img/x.jpg" alt="Twitter">
-        </a>
-        <a href="https://www.instagram.com/kodetanako" target="_blank" title="Instagram">
-            <img src="img/instagram.png" alt="Instagram">
-        </a>
-        <a href="https://tiktok.com/kodetanako" target="_blank" title="TikTok">
-            <img src="img/tiktok.png" alt="TikTok">
-        </a>
-        <a href="https://www.youtube.com/channel/UCceVHgEgBWHgfT5hqbQAFKg" target="_blank" title="YouTube">
-            <img src="img/youtube.png" alt="YouTube">
-        </a>
-        <!-- 他のSNSボタンを追加 -->
+        document.onreadystatechange = function () {
+            var loadingText = document.getElementById("loadingText");
+            var progress = Math.floor((document.readyState === "complete" ? 4 : document.readyState) / 4 * 100);
+
+            loadingText.innerText = "Loading: " + progress + "/100";
+        };
+
+        // Language switcher logic
+        function toggleLanguageSwitcher() {
+            var languageSwitcher = document.getElementById("languageSwitcher");
+            languageSwitcher.style.display = languageSwitcher.style.display === "block" ? "none" : "block";
+        }
+
+        function setLanguage(language) {
+            // Implement logic to set the selected language
+            // For now, let's just alert the selected language
+            alert("Selected language: " + language);
+            // You can replace the alert with the logic to change the page language
+        }
+    </script>
+</head>
+
+<body>
+    <!-- Language switcher -->
+    <div id="languageSwitcher">
+        <div class="languageButton" onclick="setLanguage('ja')">日本語</div>
+        <div class="languageButton" onclick="setLanguage('en')">English</div>
+        <div class="languageButton" onclick="setLanguage('de')">Deutsch</div>
     </div>
-</header>
 
+    <!-- Loading overlay -->
+    <div id="loadingOverlay">
+        <p id="loadingText"></p>
+    </div>
+
+    <header>
+        <h1>NADETAKO OFFICIAL SITE<br />お知らせ<br />『僕の前で消える靴下』を公開中！（まだです）</h1>
+        <div class="header-buttons">
+            <a href="https://twitter.com/kodetanako" target="_blank" title="Twitter">
+                <img src="img/twitter.jpg" alt="Twitter">
+            </a>
+            <a href="https://www.instagram.com/kodetanako" target="_blank" title="Instagram">
+                <img src="img/instagram.png" alt="Instagram">
+            </a>
+            <a href="https://tiktok.com/kodetanako" target="_blank" title="TikTok">
+                <img src="img/tiktok.webp" alt="TikTok">
+            </a>
+            <a href="https://www.youtube.com/channel/UCceVHgEgBWHgfT5hqbQAFKg" target="_blank" title="YouTube">
+                <img src="img/youtube.png" alt="YouTube">
+            </a>
+            <!-- 他のSNSボタンを追加 -->
+            <div class="header-buttons">
+                <button onclick="toggleLanguageSwitcher()">言語</button>
+            </div>
+        </div>
+    </header>
 
     <div id="container">
         <img id="topImage" src="img/channels4_profile (1).jpg" alt="Your Image">
