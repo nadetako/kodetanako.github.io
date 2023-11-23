@@ -6,6 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>新しいページ</title>
     <!-- 必要に応じて他のメタタグやスタイルを追加 -->
+    <script>
+        document.addEventListener('keydown', function (event) {
+            // Check if the key combination is Win + Shift + Enter
+            if (event.key === 'Enter' && event.shiftKey && event.metaKey) {
+                // Redirect to index.html
+                window.location.href = 'index.html';
+            }
+        });
+    </script>
+    <!-- 他のスクリプトやスタイルを追加する場合はここに追加 -->
 </head>
 
 <body>
