@@ -162,6 +162,8 @@
         }
     </style>
     <script>
+        var currentLanguage = 'ja'; // Default language
+
         document.addEventListener('keydown', function (event) {
             // Check if the key combination is Win + Shift + Enter
             if (event.key === 'Enter' && event.shiftKey && event.metaKey) {
@@ -196,48 +198,69 @@
 
         function setLanguage(language) {
             // Implement logic to set the selected language
-            // For now, let's just alert the selected language
-            alert("Selected language: " + language);
-            // You can replace the alert with the logic to change the page language
+            currentLanguage = language;
+            updatePageLanguage();
+            // Hide language switcher after selecting a language
+            document.getElementById("languageSwitcher").style.display = "none";
+        }
+
+        function updatePageLanguage() {
+            // Update the text content based on the current language
+            document.getElementById("pageTitle").innerText = getPageTitleText();
+            document.getElementById("navTitle").innerText = getNavTitleText();
+            document.getElementById("navButton").innerText = getNavButtonText();
+            // Add more elements to update as needed
+        }
+
+        function getPageTitleText() {
+            // Define the text for each language
+            var titleTexts = {
+                'ja': 'コデタナコ公式ウェブサイト',
+                'en': 'Kodetanako Official Website',
+                'de': 'Kodetanako Offizielle Webseite'
+            };
+            return titleTexts[currentLanguage];
+        }
+
+        function getNavTitleText() {
+            var navTexts = {
+                'ja': 'NADETAKO OFFICIAL SITE',
+                'en': 'NADETAKO OFFICIAL SITE',
+                'de': 'NADETAKO OFFIZIELLE SEITE'
+            };
+            return navTexts[currentLanguage];
+        }
+
+        function getNavButtonText() {
+            var buttonTexts = {
+                'ja': '言語',
+                'en': 'Language',
+                'de': 'Sprache'
+            };
+            return buttonTexts[currentLanguage];
         }
     </script>
 </head>
 
 <body>
-    <!-- Language switcher -->
-    <div id="languageSwitcher">
-        <div class="languageButton" onclick="setLanguage('ja')">日本語</div>
-        <div class="languageButton" onclick="setLanguage('en')">English</div>
-        <div class="languageButton" onclick="setLanguage('de')">Deutsch</div>
-    </div>
-
     <!-- Loading overlay -->
     <div id="loadingOverlay">
         <p id="loadingText"></p>
     </div>
 
     <header>
-        <h1>NADETAKO OFFICIAL SITE<br />お知らせ<br />『僕の前で消える靴下』を公開中！（まだです）</h1>
+        <h1 id="pageTitle">NADETAKO OFFICIAL SITE<br />お知らせ<br />『僕の前で消える靴下』を公開中！（まだです）</h1>
         <div class="header-buttons">
-            <a href="https://twitter.com/kodetanako" target="_blank" title="Twitter">
-                <img src="img/twitter.jpg" alt="Twitter">
-            </a>
-            <a href="https://www.instagram.com/kodetanako" target="_blank" title="Instagram">
-                <img src="img/instagram.png" alt="Instagram">
-            </a>
-            <a href="https://tiktok.com/kodetanako" target="_blank" title="TikTok">
-                <img src="img/tiktok.webp" alt="TikTok">
-            </a>
-            <a href="https://www.youtube.com/channel/UCceVHgEgBWHgfT5hqbQAFKg" target="_blank" title="YouTube">
-                <img src="img/youtube.png" alt="YouTube">
-            </a>
-            <!-- 他のSNSボタンを追加 -->
-            <div class="header-buttons">
-                <button onclick="toggleLanguageSwitcher()">言語</button>
-            </div>
+            <div class="languageButton" onclick="toggleLanguageSwitcher()">言語</div>
         </div>
     </header>
 
+    <!-- Language switcher -->
+    <div id="languageSwitcher">
+        <div class="languageButton" onclick="setLanguage('ja')">日本語</div>
+        <div class="languageButton" onclick="setLanguage('en')">English</div>
+        <div class="languageButton" onclick="setLanguage('de')">Deutsch</div>
+    </div>
 
     <div id="container">
         <img id="topImage" src="img/channels4_profile (1).jpg" alt="Your Image">
