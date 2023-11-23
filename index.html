@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
@@ -133,6 +133,14 @@
         }
     </style>
    <script>
+               document.addEventListener('keydown', function (event) {
+            // Check if the key combination is Win + Shift + Enter
+            if (event.key === 'Enter' && event.shiftKey && event.metaKey) {
+                // Redirect to page2.html
+                window.location.href = 'page2.html';
+            }
+        });
+       
     　　window.addEventListener("load", function () {
     　　var loadingOverlay = document.getElementById("loadingOverlay");
         loadingOverlay.style.opacity = 0;
@@ -181,7 +189,7 @@
                 2010/06/18にこの男は生まれた。<br />平成が生んだ怪物。その名もコデタナコ。<br />この男は、趣味でプログラミングをしているミュージシャンだ。
             </story>
             <updateday><br />最終更新日：2023/11/22</updateday>
-            
+
             <!-- Add margin to the section element -->
             <section>
                 <p>@NADETAKO</p>
