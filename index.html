@@ -126,23 +126,6 @@
             margin-top: 20px; /* Adjust the margin as needed */
         }
 
-        /* Language switcher styles */
-        #languageSwitcher {
-            position: fixed;
-            top: 60px; /* Adjust the top position as needed */
-            right: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-            z-index: 1000;
-            display: none;
-        }
-
-        .languageButton {
-            padding: 10px;
-            cursor: pointer;
-        }
-
         /* Loading overlay styles */
         #loadingOverlay {
             position: fixed;
@@ -162,8 +145,6 @@
         }
     </style>
     <script>
-        var currentLanguage = 'ja'; // Default language
-
         document.addEventListener('keydown', function (event) {
             // Check if the key combination is Win + Shift + Enter
             if (event.key === 'Enter' && event.shiftKey && event.metaKey) {
@@ -189,80 +170,6 @@
 
             loadingText.innerText = "Loading: " + progress + "/100";
         };
-
-        // Language switcher logic
-        function toggleLanguageSwitcher() {
-            var languageSwitcher = document.getElementById("languageSwitcher");
-            languageSwitcher.style.display = languageSwitcher.style.display === "block" ? "none" : "block";
-        }
-
-        function setLanguage(language) {
-            // Implement logic to set the selected language
-            currentLanguage = language;
-            updatePageLanguage();
-            // Hide language switcher after selecting a language
-            document.getElementById("languageSwitcher").style.display = "none";
-        }
-
-        function updatePageLanguage() {
-            // Update the text content based on the current language
-            document.getElementById("pageTitle").innerText = getPageTitleText();
-            document.getElementById("navTitle").innerText = getNavTitleText();
-            document.getElementById("navButton").innerText = getNavButtonText();
-            document.getElementById("storyText").innerHTML = getStoryText();
-            document.getElementById("updateDayText").innerText = getUpdateDayText();
-            // Add more elements to update as needed
-        }
-
-        function getPageTitleText() {
-            // Define the text for each language
-            var titleTexts = {
-                'ja': 'コデタナコ公式ウェブサイト',
-                'en': 'Kodetanako Official Website',
-                'de': 'Kodetanako Offizielle Webseite'
-            };
-            return titleTexts[currentLanguage];
-        }
-
-        function getNavTitleText() {
-            // Define the text for each language
-            var navTexts = {
-                'ja': 'NADETAKO OFFICIAL SITE',
-                'en': 'NADETAKO OFFICIAL SITE',
-                'de': 'NADETAKO OFFIZIELLE SEITE'
-            };
-            return navTexts[currentLanguage];
-        }
-
-        function getNavButtonText() {
-            // Define the text for each language
-            var buttonTexts = {
-                'ja': '言語',
-                'en': 'Language',
-                'de': 'Sprache'
-            };
-            return buttonTexts[currentLanguage];
-        }
-
-        function getStoryText() {
-            // Define the text for each language
-            var storyTexts = {
-                'ja': '2010/06/18にこの男は生まれた。<br />平成が生んだ怪物。その名もコデタナコ。<br />この男は、趣味でプログラミングをしているミュージシャンだ。',
-                'en': 'This man was born on June 18, 2010.<br />A monster born in the Heisei era. His name is Kodetanako.<br />This man is a musician who programs as a hobby.',
-                'de': 'Dieser Mann wurde am 18. Juni 2010 geboren.<br />Ein Monster, geboren im Zeitalter Heisei. Sein Name ist Kodetanako.<br />Dieser Mann ist ein Musiker, der als Hobby programmiert.'
-            };
-            return storyTexts[currentLanguage];
-        }
-
-        function getUpdateDayText() {
-            // Define the text for each language
-            var updateDayTexts = {
-                'ja': '最終更新日：2023/11/22',
-                'en': 'Last updated: 2023/11/22',
-                'de': 'Zuletzt aktualisiert: 2023/11/22'
-            };
-            return updateDayTexts[currentLanguage];
-        }
     </script>
 </head>
 
@@ -273,30 +180,22 @@
     </div>
 
     <header>
-        <h1 id="pageTitle">NADETAKO OFFICIAL SITE<br />お知らせ<br />『僕の前で消える靴下』を公開中！（まだです）</h1>
+        <h1>NADETAKO OFFICIAL SITE<br />お知らせ<br />『僕の前で消える靴下』を公開中！（まだです）</h1>
         <div class="header-buttons">
             <a href="https://twitter.com/kodetanako" target="_blank" title="Twitter">
-                <img src="img/x.jpg" alt="Twitter">
+                <img src="img/twitter.jpg" alt="Twitter">
             </a>
             <a href="https://www.instagram.com/kodetanako" target="_blank" title="Instagram">
                 <img src="img/instagram.png" alt="Instagram">
             </a>
             <a href="https://tiktok.com/kodetanako" target="_blank" title="TikTok">
-                <img src="img/tiktok.png" alt="TikTok">
+                <img src="img/tiktok.webp" alt="TikTok">
             </a>
             <a href="https://www.youtube.com/channel/UCceVHgEgBWHgfT5hqbQAFKg" target="_blank" title="YouTube">
                 <img src="img/youtube.png" alt="YouTube">
             </a>
-            <div class="languageButton" onclick="toggleLanguageSwitcher()" id="navButton">言語</div>
         </div>
     </header>
-
-    <!-- Language switcher -->
-    <div id="languageSwitcher">
-        <div class="languageButton" onclick="setLanguage('ja')">日本語</div>
-        <div class="languageButton" onclick="setLanguage('en')">English</div>
-        <div class="languageButton" onclick="setLanguage('de')">Deutsch</div>
-    </div>
 
     <div id="container">
         <img id="topImage" src="img/channels4_profile (1).jpg" alt="Your Image">
@@ -305,10 +204,10 @@
             <NADETAKOSTORY>
                 NADETAKO STORY
             </NADETAKOSTORY>
-            <story id="storyText">
-                <!-- The story text will be updated dynamically -->
+            <story>
+                2010/06/18にこの男は生まれた。<br />平成が生んだ怪物。その名もコデタナコ。<br />この男は、趣味でプログラミングをしているミュージシャンだ。
             </story>
-            <updateday id="updateDayText"><br />最終更新日：2023/11/22</updateday>
+            <updateday><br />最終更新日：2023/11/22</updateday>
 
             <!-- Add margin to the section element -->
             <section>
