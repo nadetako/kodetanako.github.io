@@ -209,6 +209,8 @@
             document.getElementById("pageTitle").innerText = getPageTitleText();
             document.getElementById("navTitle").innerText = getNavTitleText();
             document.getElementById("navButton").innerText = getNavButtonText();
+            document.getElementById("storyText").innerHTML = getStoryText();
+            document.getElementById("updateDayText").innerText = getUpdateDayText();
             // Add more elements to update as needed
         }
 
@@ -223,6 +225,7 @@
         }
 
         function getNavTitleText() {
+            // Define the text for each language
             var navTexts = {
                 'ja': 'NADETAKO OFFICIAL SITE',
                 'en': 'NADETAKO OFFICIAL SITE',
@@ -232,12 +235,33 @@
         }
 
         function getNavButtonText() {
+            // Define the text for each language
             var buttonTexts = {
                 'ja': '言語',
                 'en': 'Language',
                 'de': 'Sprache'
             };
             return buttonTexts[currentLanguage];
+        }
+
+        function getStoryText() {
+            // Define the text for each language
+            var storyTexts = {
+                'ja': '2010/06/18にこの男は生まれた。<br />平成が生んだ怪物。その名もコデタナコ。<br />この男は、趣味でプログラミングをしているミュージシャンだ。',
+                'en': 'This man was born on June 18, 2010.<br />A monster born in the Heisei era. His name is Kodetanako.<br />This man is a musician who programs as a hobby.',
+                'de': 'Dieser Mann wurde am 18. Juni 2010 geboren.<br />Ein Monster, geboren im Zeitalter Heisei. Sein Name ist Kodetanako.<br />Dieser Mann ist ein Musiker, der als Hobby programmiert.'
+            };
+            return storyTexts[currentLanguage];
+        }
+
+        function getUpdateDayText() {
+            // Define the text for each language
+            var updateDayTexts = {
+                'ja': '最終更新日：2023/11/22',
+                'en': 'Last updated: 2023/11/22',
+                'de': 'Zuletzt aktualisiert: 2023/11/22'
+            };
+            return updateDayTexts[currentLanguage];
         }
     </script>
 </head>
@@ -269,10 +293,10 @@
             <NADETAKOSTORY>
                 NADETAKO STORY
             </NADETAKOSTORY>
-            <story>
-                2010/06/18にこの男は生まれた。<br />平成が生んだ怪物。その名もコデタナコ。<br />この男は、趣味でプログラミングをしているミュージシャンだ。
+            <story id="storyText">
+                <!-- The story text will be updated dynamically -->
             </story>
-            <updateday><br />最終更新日：2023/11/22</updateday>
+            <updateday id="updateDayText"><br />最終更新日：2023/11/22</updateday>
 
             <!-- Add margin to the section element -->
             <section>
